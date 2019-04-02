@@ -7,6 +7,8 @@
 #include <stdlib.h>
 #include <time.h>
 
+int cont = 0;
+
 Arv_bin *arv_cria(Nodo *raiz) {
     Arv_bin *arv = (Arv_bin *) malloc(sizeof(Arv_bin));
     arv->raiz = raiz;
@@ -83,6 +85,38 @@ Nodo *nodo_remove(Nodo *raiz, char valor) {
             aux->infor = valor;
             raiz->esq = nodo_remove(raiz->esq, valor);
         }
+    }
+    return raiz;
+}
+
+/**Retorna se a arvore é binaria ou nao Atividade 3
+ * @param arvore
+ * @return*/
+int veracidade_abb(Arv_bin *arvore) {
+    if (verdade_abb(arvore->raiz)) {
+        return 1;
+    }
+    return 0;
+}
+
+Nodo *verdade_abb(Nodo *raiz) {
+    if (raiz) {
+        if (verdade_abb(raiz->esq)->infor < verdade_abb(raiz->dir)->infor)
+            return raiz;
+    }
+    return NULL;
+}
+
+Nodo *maior(Nodo *raiz) {
+    if (raiz->dir != NULL)
+        return maior(raiz->dir);
+    else
+        return raiz;
+}
+
+Nodo *menor(Nodo *raiz) {
+    while (raiz->esq){
+        menor(raiz->esq);
     }
     return raiz;
 }

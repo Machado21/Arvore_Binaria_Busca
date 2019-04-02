@@ -33,6 +33,14 @@ void arv_remove(Arv_bin *arv_bin, char valor);
 
 Nodo *nodo_remove(Nodo *raiz, char valor);
 
+int veracidade_abb(Arv_bin *);
+
+Nodo *verdade_abb(Nodo *raiz);
+
+Nodo *maior(Nodo *raiz);
+
+Nodo *menor(Nodo *raiz);
+
 void inprime_escolhendo_ordem(Arv_bin *arv);
 
 void pre(Nodo *no);
